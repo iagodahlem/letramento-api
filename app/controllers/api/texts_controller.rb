@@ -1,9 +1,14 @@
 class Api::TextsController < ApplicationController
-  before_action :set_place, only: %w"show update destroy"
-  before_action :authenticate_user, only: %w"create update destroy"
+  before_action :set_text, only: %i[show update destroy]
+  before_action :authenticate_user, only: %i[create update destroy]
 
   def index
-    @texts = Text.all
+    p current_user()
+    if current_user
+      @texts = Text.find_by(user_id: current_user[:id])
+    else
+      @texts = Text.all
+    end
   end
 
   def show
@@ -11,8 +16,10 @@ class Api::TextsController < ApplicationController
 
   def create
     @text = Text.new(text_params)
-    data = sobek_service.post(@text.body)
-    @text.data = data
+    @text.data = sobek_service.post(@text.body)
+    @text.user = current_user
+
+    p "User: #{@text.user.name}"
 
     if @text.save
       render :show, status: :created

@@ -64,7 +64,6 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
-    json (1.8.6)
     jwt (1.5.6)
     knock (2.1.1)
       bcrypt (~> 3.1)
@@ -154,7 +153,6 @@ DEPENDENCIES
   byebug
   http
   jbuilder (~> 2.5)
-  json
   knock
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)

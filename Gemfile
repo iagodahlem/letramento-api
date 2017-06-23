@@ -26,7 +26,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 
 gem 'http'
-gem 'json'
 gem 'knock'
 
 group :development, :test do

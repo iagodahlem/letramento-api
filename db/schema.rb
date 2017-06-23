@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 20170620180045) do
     t.string "description", null: false
     t.string "body", null: false
     t.string "data"
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_texts_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
