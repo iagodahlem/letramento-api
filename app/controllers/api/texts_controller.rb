@@ -24,6 +24,8 @@ class Api::TextsController < ApplicationController
   end
 
   def update
+    @text.data = sobek_service.post(@text.body)
+
     if @text.update(text_params)
       render :show, status: :ok
     else
