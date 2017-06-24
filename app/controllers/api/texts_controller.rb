@@ -3,12 +3,7 @@ class Api::TextsController < ApplicationController
   before_action :authenticate_user, only: %i[create update destroy]
 
   def index
-    p current_user()
-    if current_user
-      @texts = Text.find_by(user_id: current_user[:id])
-    else
-      @texts = Text.all
-    end
+    @texts = Text.all
   end
 
   def show
